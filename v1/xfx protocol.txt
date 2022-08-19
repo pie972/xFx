@@ -1,0 +1,26 @@
+Protocol:
+
+1- The client opens a connection with the server and informs the server whether it wants to download or upload a file using a header
+
+2- If the client wants to download a file then
+	2.1- The header will be as the following: 	   getSize [one space] [file name] [Line Feed]
+	2.2- Upon receiving this header, the server searches for the specified file and check if it already exists or not
+	2.3- If the file is already existing, the server shall reply with a header as the following: [file size] [Line Feed]
+		2.3.1- Upon receiving this header, the client should chech if the file is stale or not
+		2.3.2- If the file is stale, the client should reply with a header as the following: download [one space] [file name] [Line Feed]
+	2.4- If the file is found then the server shall reply with a header as the following:    OK [one space] [file size] [Line Feed]
+	2.5- After sending the header, the server shall send the actual bytes that make the requested file
+
+
+3- If the client wants to upload a file then
+	3.1- The header will be as the following: 	   upload [one space] [file name] [one space] [file size] [Line Feed]
+	3.2- After sending the header, the client shall send the actual bytes that make the file
+
+4- if the client wants the list of files that are shareable by the server then
+	4.1- The header will be as the following: 	   list [Line Feed]
+	4.2- Upon receiving this header, the server shall send the folder of files
+
+5- if the client wants to resume the file download where it stopped then
+	5.1- The header will be as the following: 	   resume [one space] [file name] [one space] [file size] [Line Feed]
+	5.2- Upon receiving this header, the server shall resume the downloading from it stopped
+ 
