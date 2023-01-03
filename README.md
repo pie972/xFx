@@ -1,3 +1,4 @@
+## The project is not yet uploaded completely. Still in progress..
 # xFx
 xFx is a project in which I can take control of a shared folder under a remote system. More specifically, I can do the following: browse the remote shared folder, including its sub-folders, rename a remote shared file or sub-folder, download a remote shared file, upload a local file to a specified path under the remote shared folder, and delete a shared remote file. Java is used on the remote system side while Python is used on the local system.
 
